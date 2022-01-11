@@ -1,0 +1,17 @@
+﻿#produkt{
+    font-size: 1.1em !important;
+}
+
+#ceny{
+    font-size: 1.2em !important;
+}
+
+@media only screen and (max-width: 768px){
+    #cont{
+        min-height: 100vh !important;
+    }
+
+    body {
+        background-color: #f8f9fa !important;
+    }
+}

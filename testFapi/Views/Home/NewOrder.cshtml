@@ -1,0 +1,139 @@
+﻿@model testFapi.Models.OrderViewModel
+
+@{
+    ViewData["Title"] = "Nová Objednávka";
+}
+
+<form method="post">
+    <div class="row text-center"> 
+        <h1 class="mb-0">Nová objednávka</h1>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-3 col-md-1">
+            <hr class="mb-md-5"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col mb-2">
+            <h4>Kontaktní údaje</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-3">
+            <div class="form-group mb-2 mb-md-0">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" placeholder="Alfons"/>
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-3">
+            <div class="form-group mb-2 mb-md-0">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" placeholder="Mucha"/>
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-3">
+            <div class="form-group mb-2 mb-md-0">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" placeholder="jmeno@email.cz"/>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-12 col-md-3">
+            <div class="form-group mb-2 mb-md-0">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" placeholder="777111222"/>
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col mb-2">
+            <h4>Adresa</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8 col-md-3">
+            <div class="form-group">
+                <label asp-for="Street"></label>
+                <input asp-for="Street" class="form-control" placeholder="Česká"/>
+                <span asp-validation-for="Street" class="text-danger fw-bold"></span>
+            </div>
+        </div>
+        <div class="col-4 col-md-2">
+            <div class="form-group">
+                <label asp-for="HouseNumber"></label>
+                <input asp-for="HouseNumber" class="form-control" placeholder="42"/>
+                <span asp-validation-for="HouseNumber" class="text-danger fw-bold"></span>
+            </div>
+        </div>
+        <div class="col-7 col-md-4">
+            <div class="form-group">
+                <label asp-for="City"></label>
+                <input asp-for="City" class="form-control" placeholder="Brno"/>
+                <span asp-validation-for="City" class="text-danger fw-bold"></span>
+            </div>
+        </div>
+        <div class="col-5 col-md-3">
+            <div class="form-group">
+                <label asp-for="PostalCode"></label>
+                <input asp-for="PostalCode" class="form-control" placeholder="60200"/>
+                <span asp-validation-for="PostalCode" class="text-danger fw-bold"></span>
+            </div>
+        </div>
+        <hr class="my-4 my-md-5" />
+    </div>
+    <div class="row">
+        <div class="col mb-2">
+            <h4>Produkt</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-5">
+            <div class="form-group">
+                <label asp-for="ProductName"></label>
+                <input asp-for="ProductName" class="form-control" placeholder="Vrtačka"/>
+                <span asp-validation-for="Street" class="text-danger fw-bold"></span>
+            </div>
+        </div>
+        <div class="col-4 col-md-2">
+            <div class="form-group">
+                <label asp-for="Quantity"></label>
+                <input asp-for="Quantity" class="form-control text-end" id="quantity" min="1"/>
+                <span asp-validation-for="Quantity" class="text-danger fw-bold"></span>
+            </div>
+        </div>
+        <div class="col-5 col-md-3">
+            <div class="form-group">
+                <label asp-for="Price"></label>
+                <input asp-for="Price" class="form-control text-end" placeholder="1234" id="price"/> 
+                <span asp-validation-for="Price" class="text-danger fw-bold"></span>
+            </div>
+        </div>
+        <div class="col-3 col-md-2">
+            <div class="form-group">
+                <label asp-for="TaxRate"></label>
+                <select asp-for="TaxRate" class ="form-control text-end" asp-items="ViewBag.taxRates"></select>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-end mt-5">  
+        <div class="col-auto">
+            <div class="form-group">
+                <h5><label asp-for="TotalPrice" class="control-label"></label></h5>
+                <input asp-for="TotalPrice" id="total" disabled tabindex="-1" class="form-control text-end fw-bold"/>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5 justify-content-center">
+        <div class="col text-center">
+            <button type="submit" class="btn btn-success btn-lg fw-bold">Objednat</button>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <script src="~/js/total.js"></script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
